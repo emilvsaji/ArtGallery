@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Art Management Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+
+    .form-container h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #34495e;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Art Management</h2>
+    <form id="artForm">
+      <label for="artTitle">Artwork Title</label>
+      <input type="text" id="artTitle" name="artTitle" required />
+
+      <label for="artFile">Upload Artwork</label>
+      <input type="file" id="artFile" name="artFile" accept="image/*" required />
+
+      <label for="action">Action</label>
+      <select id="action" name="action">
+        <option value="upload">Upload</option>
+        <option value="edit">Edit</option>
+        <option value="organize">Organize</option>
+      </select>
+
+      <button type="submit">Submit</button>
+      <div class="message" id="messageBox"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("artForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const title = document.getElementById("artTitle").value;
+      const action = document.getElementById("action").value;
+      const messageBox = document.getElementById("messageBox");
+
+      messageBox.textContent = `Artwork "${title}" has been marked for "${action}".`;
+    });
+  </script>
+</body>
+</html>

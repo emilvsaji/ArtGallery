@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 450px;
+    }
+
+    .form-container h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #34495e;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Customers</h2>
+    <form id="customerForm">
+      <label for="customerName">Customer Name</label>
+      <input type="text" id="customerName" name="customerName" required />
+
+      <label for="customerEmail">Email Address</label>
+      <input type="email" id="customerEmail" name="customerEmail" required />
+
+      <label for="historyAction">History Action</label>
+      <select id="historyAction" name="historyAction">
+        <option value="view">View Purchase History</option>
+        <option value="update">Update Profile</option>
+        <option value="delete">Delete Customer</option>
+      </select>
+
+      <button type="submit">Submit</button>
+      <div class="message" id="messageBox"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("customerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("customerName").value;
+      const action = document.getElementById("historyAction").value;
+      const messageBox = document.getElementById("messageBox");
+
+      messageBox.textContent = `Customer "${name}" selected for "${action}".`;
+    });
+  </script>
+</body>
+</html>

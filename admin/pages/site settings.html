@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site Settings</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 500px;
+    }
+
+    .form-container h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #34495e;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Site Settings</h2>
+    <form id="settingsForm">
+      <label for="homepageTitle">Homepage Title</label>
+      <input type="text" id="homepageTitle" name="homepageTitle" required />
+
+      <label for="homepageDesc">Homepage Description</label>
+      <textarea id="homepageDesc" name="homepageDesc" required></textarea>
+
+      <label for="blogStatus">Blog Status</label>
+      <select id="blogStatus" name="blogStatus">
+        <option value="enabled">Enabled</option>
+        <option value="disabled">Disabled</option>
+      </select>
+
+      <label for="adminPassword">Admin Password</label>
+      <input type="password" id="adminPassword" name="adminPassword" required />
+
+      <button type="submit">Save Settings</button>
+      <div class="message" id="messageBox"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("settingsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const title = document.getElementById("homepageTitle").value;
+      const blogStatus = document.getElementById("blogStatus").value;
+      const messageBox = document.getElementById("messageBox");
+
+      messageBox.textContent = `Homepage updated to "${title}" and blog is "${blogStatus}".`;
+    });
+  </script>
+</body>
+</html>

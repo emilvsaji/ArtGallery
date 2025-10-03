@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artist Profiles Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 450px;
+    }
+
+    .form-container h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #34495e;
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Artist Profiles</h2>
+    <form id="artistForm">
+      <label for="artistName">Artist Name</label>
+      <input type="text" id="artistName" name="artistName" required />
+
+      <label for="artistBio">Artist Bio</label>
+      <textarea id="artistBio" name="artistBio" placeholder="Write a short biography..." required></textarea>
+
+      <label for="collection">Collection Name</label>
+      <input type="text" id="collection" name="collection" placeholder="e.g. Abstract Wonders" required />
+
+      <label for="action">Action</label>
+      <select id="action" name="action">
+        <option value="add">Add Profile</option>
+        <option value="edit">Edit Profile</option>
+        <option value="organize">Organize Collections</option>
+      </select>
+
+      <button type="submit">Submit</button>
+      <div class="message" id="messageBox"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("artistForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("artistName").value;
+      const action = document.getElementById("action").value;
+      const messageBox = document.getElementById("messageBox");
+
+      messageBox.textContent = `Artist "${name}" has been marked for "${action}".`;
+    });
+  </script>
+</body>
+</html>
